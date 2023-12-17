@@ -7,21 +7,21 @@ pub fn part_one(input: &str) -> Option<u32> {
     let mut possible_total = 0;
     for game in input.lines() {
         let mut possible = true;
-        let (game_id, sets_str) = game.split_once(":")?;
-        let game_result = game_id.split_once(" ")?.1.parse();
+        let (game_id, sets_str) = game.split_once(':')?;
+        let game_result = game_id.split_once(' ')?.1.parse();
         let game_num: u32 = match game_result {
             Ok(x) => x,
             _ => 0,
         };
-        let sets = sets_str.split(";");
+        let sets = sets_str.split(';');
         for set in sets {
-            let marbles = set.split(",");
+            let marbles = set.split(',');
             for marble in marbles {
                 if !possible {
                     break;
                 }
-                let strip_marble = marble.strip_prefix(" ")?;
-                let (count_str, colour) = strip_marble.split_once(" ")?;
+                let strip_marble = marble.strip_prefix(' ')?;
+                let (count_str, colour) = strip_marble.split_once(' ')?;
                 let count: u32 = match count_str.parse() {
                     Ok(x) => x,
                     _ => 0,
@@ -44,16 +44,16 @@ pub fn part_one(input: &str) -> Option<u32> {
 pub fn part_two(input: &str) -> Option<u32> {
     let mut possible_total = 0;
     for game in input.lines() {
-        let (_, sets_str) = game.split_once(":")?;
-        let sets = sets_str.split(";");
+        let (_, sets_str) = game.split_once(':')?;
+        let sets = sets_str.split(';');
         let mut red_min = 0;
         let mut blue_min = 0;
         let mut green_min = 0;
         for set in sets {
-            let marbles = set.split(",");
+            let marbles = set.split(',');
             for marble in marbles {
-                let strip_marble = marble.strip_prefix(" ")?;
-                let (count_str, colour) = strip_marble.split_once(" ")?;
+                let strip_marble = marble.strip_prefix(' ')?;
+                let (count_str, colour) = strip_marble.split_once(' ')?;
                 let count: u32 = match count_str.parse() {
                     Ok(x) => x,
                     _ => 0,
@@ -62,7 +62,7 @@ pub fn part_two(input: &str) -> Option<u32> {
                     "red" => red_min = red_min.max(count),
                     "green" => green_min = green_min.max(count),
                     "blue" => blue_min = blue_min.max(count),
-                    _ => ()
+                    _ => (),
                 }
             }
         }

@@ -59,7 +59,7 @@ pub fn part_two(input: &str) -> Option<u32> {
                 }
             }
         }
-        if min_word == "" && max_word == "" {
+        if min_word.is_empty() && max_word.is_empty() {
             continue;
         }
 
